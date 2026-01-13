@@ -1,7 +1,87 @@
-<nav class="text-grey">
-  <ul>
-    <li class="font-oswald"><a href="#">Home</a></li>
-    <li><a href="#">About</a></li>
-    <li><a href="#">Contact</a></li>
+---
+import { Image } from "astro:assets";
+import navLogo from '../assets/logo.svg';
+import Button from '../components/UI/Button.astro';
+
+const navItems = [
+  { title: 'Kontakt', href: '#' },
+  { title: 'Příběh', href: '#' },
+  { title: 'Tým', href: '#' },
+  { title: 'Služby', href: '#' },
+  { title: 'Info', href: '#' },
+];
+---
+
+<nav class="relative border border-white text-grey text-2xl flex items-center justify-between px-6 md:px-12 lg:px-24.75 py-4">
+  <!-- Logo -->
+  <div>
+    <a href="#">
+      <Image 
+        src={navLogo} 
+        alt="Lazebna Logo" 
+        class="w-32 md:w-48 lg:w-[259px] h-auto" 
+      />
+    </a>
+  </div>
+
+  <!-- Navigation Links -->
+  <ul class="hidden lg:flex gap-[39px]">
+    {navItems.map((item)=>(
+      <li class="relative group cursor-pointer transition-colors duration-300 hover:text-white">
+        <a href={item.href} class="relative">
+          {item.title} 
+          <span class="absolute left-1/2 -bottom-2 h-1.5 w-1.5 -translate-x-1/2 rounded-full bg-[#010101] opacity-0 scale-0 transition-all duration-300 group-hover:opacity-100 group-hover:scale-100"></span>
+        </a>
+      </li>
+    ))}
   </ul>
+
+  <!-- Book Now Button -->
+  <div class="hidden lg:block text-lg tracking-[17%]">
+    <Button title="BOOK NOW" />
+  </div>
+
+  <!--MAKE NAVBAR RESPONSIVE -->
+
+  <!-- Hamburger Menu -->
+  <button id="menu-toggle" class="lg:hidden flex flex-col gap-1.5 z-50 pointer-events-auto" aria-label="Toggle Menu">
+    <span class="w-8 h-0.5 bg-white transition-all duration-300" id="line1"></span>
+    <span class="w-8 h-0.5 bg-white transition-all duration-300" id="line2"></span>
+    <span class="w-8 h-0.5 bg-white transition-all duration-300" id="line3"></span>
+  </button>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="fixed inset-0 bg-black/95 z-40 translate-x-full transition-transform duration-300 ease-in-out lg:hidden flex flex-col items-center justify-center gap-8">
+    <ul class="flex flex-col items-center gap-8">
+      {navItems.map((item)=>(
+        <li><a href={item.href} class="text-3xl hover:text-white transition-colors">{item.title}</a></li>
+      ))}
+    </ul>
+    <div class="mt-4">
+      <Button title="BOOK NOW" />
+    </div>
+  </div>
 </nav>
+
+<script>
+  const btn = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const line1 = document.getElementById('line1');
+  const line2 = document.getElementById('line2');
+  const line3 = document.getElementById('line3');
+
+  btn?.addEventListener('click', () => {
+    // Toggle Menu Slide
+    menu?.classList.toggle('translate-x-full');
+    
+    // Animate Hamburger to "X"
+    line1?.classList.toggle('rotate-45');
+    line1?.classList.toggle('translate-y-2');
+    line2?.classList.toggle('opacity-0');
+    line3?.classList.toggle('-rotate-45');
+    line3?.classList.toggle('-translate-y-2');
+    
+    // Prevent scrolling when menu is open
+    document.body.classList.toggle('overflow-hidden');
+  });
+</script>
