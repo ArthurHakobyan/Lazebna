@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@theme {
+  --color-orange: #E9520E;
+  --color-grey: #595959;
+  --font-family-sans: "Inter Tight", sans-serif;
+}
+
+body {
+  font-family: "Inter Tight", sans-serif;
+}
+
+.font-oswald {
+  font-family: "Oswald", sans-serif;
+}
