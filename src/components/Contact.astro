@@ -1,0 +1,50 @@
+---
+import Card from './UI/Card.astro';
+import locationIcon from '../assets/LocationMarkerOutline.svg';
+import openingHoursIcon from '../assets/ClockOutline.svg';
+import contactIcon from '../assets/PhoneOutline.svg';
+import { Image } from 'astro:assets';
+import mapIcon from '../assets/google maps.svg';
+
+---
+
+<section>
+    <div class="max-w-[1324px] mx-auto">
+        <div class="flex flex-col lg:flex-row lg:justify-around items-center gap-4 py-[114px]">
+            <Card 
+            title="Adresa" 
+            cardIcon={locationIcon}>
+               <p>
+                   Palackého třída 13
+                   612 00 Brno-Královo Pole
+               </p>
+               <Image 
+                src={mapIcon} 
+                alt="Location Icon"
+                width={77}
+                height={77}
+               />
+            </Card>
+            <Card 
+            title="Otevírací doba" 
+            cardIcon={openingHoursIcon}>
+               <p>
+                Pondělí - Pátek:<br/>
+                Sobota:
+               </p>
+               <p>
+                8:00 - 19:00<br/>
+                9:00 - 19:00
+               </p>
+            </Card>
+            <Card 
+            title="Kontakt" 
+            cardIcon={contactIcon}>
+               <p>
+                +420 724 704 471<br/>
+                barbershop@lazebna.com
+               </p>
+            </Card>
+        </div>
+    </div>
+</section>

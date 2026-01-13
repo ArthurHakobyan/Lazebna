@@ -6,10 +6,32 @@
   --font-family-sans: "Inter Tight", sans-serif;
 }
 
+@font-face {
+  font-family: 'Rokiest';
+  src: url('/Rokiest-Regular.otf') format('opentype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Rokiest';
+  src: url('/Rokiest-Bold.otf') format('opentype');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Rokiest';
+  src: url('/Rokiest-Extrablack.otf') format('opentype');
+  font-weight: 1000;
+}
+
 body {
   font-family: "Inter Tight", sans-serif;
 }
 
 .font-oswald {
   font-family: "Oswald", sans-serif;
+}
+
+.font-rokiest {
+  font-family: 'Rokiest', sans-serif;
 }
