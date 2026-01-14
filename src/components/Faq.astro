@@ -1,0 +1,28 @@
+---
+import FaqItem from '../components/UI/FaqItem.astro';
+
+const faqs = [
+  {
+    q: "Jak se mohu objednat?",
+    a: "Objednat se můžete online přes tlačítko 'BOOK NOW', nebo nám zavolejte přímo na naše telefonní číslo uvedené v kontaktech."
+  },
+  {
+    q: "Nabízíte i dárkové poukazy?",
+    a: "Ano, nabízíme dárkové poukazy v libovolné hodnotě. Můžete si je zakoupit přímo u nás v salonu."
+  }
+];
+---
+
+<section class="py-[270px]">
+  <div class="max-w-7xl mx-auto">
+    
+      <h2 class="font-rockiest font-[1000] text-orange text-[48px] uppercase text-center">Nejčastější otázky</h2>
+    
+    <div>
+      {faqs.map(faq => (
+        <FaqItem question={faq.q} answer={faq.a} />
+      ))}
+    </div>
+    
+  </div>
+</section>
