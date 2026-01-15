@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import whiteIcon from "../assets/Property 1=Default.svg";
 import orangeIcon from "../assets/Property 1=Variant2.svg";
+import Button from './UI/Button.astro';
 
 /* Initial state: Martin's data is rendered by default 
   so the page looks correct on the first load (SEO friendly).
@@ -68,6 +69,9 @@ const initialBarber = {
                 />
                 </a>
             </div>
+        </div>
+        <div class="lg:hidden my-4  mx-auto w-max">
+            <Button href="https://lazebna.reservio.com/" title="BOOK NOW" />
         </div>
     </div>
 
