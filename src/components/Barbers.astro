@@ -1,4 +1,8 @@
 ---
+import { Image } from "astro:assets";
+import whiteIcon from "../assets/Property 1=Default.svg";
+import orangeIcon from "../assets/Property 1=Variant2.svg";
+
 /* Initial state: Martin's data is rendered by default 
   so the page looks correct on the first load (SEO friendly).
 */
@@ -12,10 +16,10 @@ const initialBarber = {
 
 <section>
     
-    <div class="max-w-7xl mx-auto border border-white text-white">
+    <div class="max-w-7xl mx-auto text-white">
         <h2 class="font-rockiest font-[1000] text-orange text-[48px] uppercase">Náš tým</h2>
-        <div class="flex">
-            <div class="flex w-[50%]">
+        <div class="lg:flex p-4">
+            <div class="flex lg:w-[50%]">
                 <div class="w-[30%] text-[36px] text-grey">
                     <ul id="barber-list">
                         <li class="barber-trigger cursor-pointer text-white transition-colors" data-name="martin">Martin</li>
@@ -23,18 +27,18 @@ const initialBarber = {
                         <li class="barber-trigger cursor-pointer hover:text-white transition-colors" data-name="david">David</li>
                     </ul>
                 </div>
-                <div class="w-[416px] h-[510px] border border-white overflow-hidden">
+                <div class="lg:w-[416px] lg:h-[510px] w-[250px] h-[306px] overflow-hidden border-white rounded-xl shadow-[2px_4px_4px_rgba(63,63,63,0.32)]">
                     <img id="barber-img" src="/src/assets/barber1.jpg" alt="Barber" class="w-full h-full object-cover transition-opacity duration-300" />
                 </div>
             </div>
     
-            <div class="flex flex-col justify-between w-[50%]">
+            <div class="flex flex-col justify-between lg:w-[50%] p-4">
                 <div>
-                    <p id="barber-slogan" class="w-[80%] text-[24px] leading-relaxed transition-opacity duration-300">
+                    <p id="barber-slogan" class="lg:w-[80%] text-lg lg:text-[24px] leading-relaxed transition-opacity duration-300 pb-6">
                         {initialBarber.slogan}
                     </p>
                 </div>
-                <div class="flex justify-between text-[19px] tracking-[17%] lg:pb-[128px] lg:pr-[100px] text-grey">
+                <div class="flex justify-between text-sm lg:text-[19px] tracking-[17%] lg:pb-[128px] lg:pr-[100px] text-grey">
                     <ul>
                         <li>FAVORITE FILM</li>
                         <li>FAVORITE ALBUM</li>
@@ -46,6 +50,23 @@ const initialBarber = {
                         <li id="barber-cut" class="transition-opacity">{initialBarber.cut}</li>
                     </ul>
                 </div>
+            </div>
+        </div>
+        <div class="hidden lg:block relative h-[185px]">
+            <div class="group relative mx-auto w-[185px] h-[185px] mt-[-60px] cursor-pointer transition-transform duration-500 ease-in-out hover:rotate-45">
+                <a href="https://lazebna.reservio.com/">
+                    <Image 
+                    src={whiteIcon} 
+                    alt="Book now" 
+                    class="absolute inset-0 w-full h-full transition-opacity duration-500 opacity-100 group-hover:opacity-0"
+                />
+
+                <Image 
+                    src={orangeIcon} 
+                    alt="Book now" 
+                    class="absolute inset-0 w-full h-full -rotate-45  transition-opacity duration-500 opacity-0 group-hover:opacity-100"
+                />
+                </a>
             </div>
         </div>
     </div>

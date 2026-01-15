@@ -1,12 +1,16 @@
 ---
 import heroImage from '../assets/Hero image extreme crop.svg';
 import { Image } from "astro:assets";
+import Button from './UI/Button.astro';
 ---
 
 <section class="mt-[180px]">
     <main>
-        <h1 class="text-[70px] text-white font-rokiest font-[1000] uppercase text-center mb-[-30px]">Moderní zážitek<br />
+        <h1 class="lg:text-[70px] text-[40px] text-white font-rokiest font-[1000] uppercase text-center lg:mb-[-30px]">Moderní zážitek<br />
 Poctivé řemeslo</h1>
+            <div class="lg:hidden my-4 mx-auto w-max">
+                <Button title="BOOK NOW" />
+            </div>
         <Image 
             src={heroImage} 
             alt="Hero Image" 
