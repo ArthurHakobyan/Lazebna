@@ -1,0 +1,115 @@
+---
+/* Initial state: Martin's data is rendered by default 
+  so the page looks correct on the first load (SEO friendly).
+*/
+const initialBarber = {
+  slogan: "Pro mě je barbering kombinací řemesla, detailu a respektu k tomu, kdo zrovna sedí v křesle. Přijď si pro střih, který tě nebude definovat — jen podtrhne to, kým už jsi.",
+  film: "FIGHT CLUB",
+  album: "GOOD KID, M.A.A.D. CITY",
+  cut: "TAPER FADE"
+};
+---
+
+<section>
+    
+    <div class="max-w-7xl mx-auto border border-white text-white">
+        <h2 class="font-rockiest font-[1000] text-orange text-[48px] uppercase">Náš tým</h2>
+        <div class="flex">
+            <div class="flex w-[50%]">
+                <div class="w-[30%] text-[36px] text-grey">
+                    <ul id="barber-list">
+                        <li class="barber-trigger cursor-pointer text-white transition-colors" data-name="martin">Martin</li>
+                        <li class="barber-trigger cursor-pointer hover:text-white transition-colors" data-name="artur">Artur</li>
+                        <li class="barber-trigger cursor-pointer hover:text-white transition-colors" data-name="david">David</li>
+                    </ul>
+                </div>
+                <div class="w-[416px] h-[510px] border border-white overflow-hidden">
+                    <img id="barber-img" src="/src/assets/barber1.jpg" alt="Barber" class="w-full h-full object-cover transition-opacity duration-300" />
+                </div>
+            </div>
+    
+            <div class="flex flex-col justify-between w-[50%]">
+                <div>
+                    <p id="barber-slogan" class="w-[80%] text-[24px] leading-relaxed transition-opacity duration-300">
+                        {initialBarber.slogan}
+                    </p>
+                </div>
+                <div class="flex justify-between text-[19px] tracking-[17%] lg:pb-[128px] lg:pr-[100px] text-grey">
+                    <ul>
+                        <li>FAVORITE FILM</li>
+                        <li>FAVORITE ALBUM</li>
+                        <li>FAVORITE CUT</li>
+                    </ul>
+                    <ul class="text-right text-grey">
+                        <li id="barber-film" class="transition-opacity">{initialBarber.film}</li>
+                        <li id="barber-album" class="transition-opacity">{initialBarber.album}</li>
+                        <li id="barber-cut" class="transition-opacity">{initialBarber.cut}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<script>
+    // Data is kept here in the script bundle, not in HTML attributes
+    const barberData = {
+        martin: {
+            slogan: "Pro mě je barbering kombinací řemesla, detailu a respektu k tomu, kdo zrovna sedí v křesle. Přijď si pro střih, který tě nebude definovat — jen podtrhne to, kým už jsi.",
+            film: "FIGHT CLUB",
+            album: "GOOD KID, M.A.A.D. CITY",
+            cut: "TAPER FADE",
+            img: "/src/assets/barber1.jpg"
+        },
+        artur: {
+            slogan: "Detail a preciznost jsou pro mě základem. Každý pohyb břitvou musí být promyšlený, aby výsledek odpovídal vaší osobnosti a životnímu stylu.",
+            film: "PULP FICTION",
+            album: "THE EMINEM SHOW",
+            cut: "BUZZ CUT",
+            img: "/src/assets/barber2.avif"
+        },
+        david: {
+            slogan: "Klasické techniky s moderním přístupem. Věřím, že barbering je o budování komunity a o tom, aby se člověk v křesle cítil uvolněně.",
+            film: "THE GODFATHER",
+            album: "DARK SIDE OF THE MOON",
+            cut: "SIDE PART",
+            img: "/src/assets/barber3.avif"
+        }
+    };
+
+    // Selecting elements
+    const triggers = document.querySelectorAll('.barber-trigger');
+    const sloganEl = document.getElementById('barber-slogan');
+    const filmEl = document.getElementById('barber-film');
+    const albumEl = document.getElementById('barber-album');
+    const cutEl = document.getElementById('barber-cut');
+    const imgEl = document.getElementById('barber-img') as HTMLImageElement;
+
+    triggers.forEach(trigger => {
+        trigger.addEventListener('click', () => {
+            const name = trigger.getAttribute('data-name');
+
+            // TypeScript check: ensures name is a valid key of our data object
+            if (name && name in barberData) {
+                const data = barberData[name as keyof typeof barberData];
+
+                // 1. Update active state styles
+                triggers.forEach(t => {
+                    t.classList.remove('text-white');
+                    t.classList.add('text-grey');
+                });
+                trigger.classList.add('text-white');
+                trigger.classList.remove('text-grey');
+
+                // 2. Update Content (with simple check for null)
+                if (sloganEl) sloganEl.textContent = data.slogan;
+                if (filmEl) filmEl.textContent = data.film;
+                if (albumEl) albumEl.textContent = data.album;
+                if (cutEl) cutEl.textContent = data.cut;
+                if (imgEl) imgEl.src = data.img;
+            }
+        });
+    });
+</script>
+
