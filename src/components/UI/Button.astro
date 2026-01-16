@@ -1,12 +1,36 @@
 ---
-const { title, href, ...rest } = Astro.props;
+interface Props {
+  title: string;
+  href?: string;
+  // This tells TS variant MUST be one of these three strings
+  variant?: 'primary' | 'secondary' | 'dark';
+  // This allows you to still pass standard attributes like 'target' or 'id'
+  [x: string]: any; 
+}
+
+const { 
+  title, 
+  href, 
+  variant = 'primary', // 'primary' or 'secondary'
+  ...rest 
+} = Astro.props;
+
 const Element = href ? 'a' : 'button';
+
+// Define styles in a way that they NEVER overlap
+const base = "px-[62.5px] py-[12px] rounded-xl border transition-all duration-300";
+
+const themes = {
+  primary: "text-orange lg:text-grey px-[62.5px] py-[12px] bg-white/5 border border-white/10 rounded-xl shadow-[2px_4px_4px_rgba(63,63,63,0.32)] hover:text-orange hover:bg-orange/15 hover:border-orange/75 hover:shadow-[2px_4px_4px_rgba(233,82,14,0.32)] transition-[box-shadow,color,border-color] duration-300 ease-in-out",
+  secondary: "text-orange bg-white shadow-[2px_4px_4px_rgba(63,63,63,0.32)] hover:text-white hover:bg-white/10 hover:border-white shadow-[2px_4px_4px_rgba(255,255,255,0.3)] transition-[box-shadow,color,border-color] duration-300 ease-in-out",
+  dark: "text-white bg-black border-white/20 hover:bg-white/10"
+};
 ---
 
 <Element 
   href={href} 
-  {...rest} 
-  class="text-orange lg:text-grey px-[62.5px] py-[12px] bg-white/5 border border-white/10 rounded-xl shadow-[2px_4px_4px_rgba(63,63,63,0.32)] hover:text-orange hover:bg-orange/15 hover:border-orange/75 hover:shadow-[2px_4px_4px_rgba(233,82,14,0.32)] transition-[box-shadow,color,border-color] duration-300 ease-in-out"
+  class:list={[base, themes[variant]]} 
+  {...rest}
 >
   {title}
 </Element>
