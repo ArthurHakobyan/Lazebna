@@ -39,7 +39,7 @@ const services = [
 
 <section class="pb-67" id="services">
     <h2 class="font-rokiest font-[1000] text-orange text-[48px] uppercase text-center">Naše služby</h2>
-    <div class="max-w-7xl mx-auto flex overflow-x-auto pb-10 px-[5%] cursor-grab active:cursor-grabbing hide-scrollbar snap-x snap-mandatory gap-6">
+    <div id="services-container" class="max-w-7xl mx-auto flex overflow-x-auto pb-10 px-[5%] cursor-grab active:cursor-grabbing hide-scrollbar snap-x snap-mandatory gap-6">
         {services.map(service => (
             <ServicesCard 
                 title={service.name} 
@@ -62,3 +62,47 @@ const services = [
     scrollbar-width: none;  /* Firefox */
   }
 </style>
+
+<script>
+  // Select the slider container
+  const slider = document.getElementById('services-container') as HTMLElement | null;
+
+  if (slider) {
+    let isDown = false;
+    let startX: number;
+    let scrollLeft: number;
+
+    slider.addEventListener('mousedown', (e: MouseEvent) => {
+      isDown = true;
+      slider.classList.replace('cursor-grab', 'cursor-grabbing');
+      
+      // Calculate start position
+      startX = e.pageX - slider.offsetLeft;
+      scrollLeft = slider.scrollLeft;
+      
+      // Prevent text selection while dragging
+      slider.style.userSelect = 'none';
+      slider.style.scrollSnapType = 'none'; // Temporarily disable snapping for smooth drag
+    });
+
+    slider.addEventListener('mouseleave', () => {
+      isDown = false;
+      slider.classList.replace('cursor-grabbing', 'cursor-grab');
+    });
+
+    slider.addEventListener('mouseup', () => {
+      isDown = false;
+      slider.classList.replace('cursor-grabbing', 'cursor-grab');
+      slider.style.scrollSnapType = 'x mandatory'; // Re-enable snapping
+    });
+
+    slider.addEventListener('mousemove', (e: MouseEvent) => {
+      if (!isDown) return;
+      e.preventDefault();
+      
+      const x = e.pageX - slider.offsetLeft;
+      const walk = (x - startX) * 2; // Adjust scroll speed (2 is a good baseline)
+      slider.scrollLeft = scrollLeft - walk;
+    });
+  }
+</script>
