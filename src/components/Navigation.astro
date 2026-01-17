@@ -7,7 +7,7 @@ const navItems = [
   { title: 'Kontakt', href: '#kontakt' },
   { title: 'Příběh', href: '#pribeh' },
   { title: 'Tým', href: '#tym' },
-  { title: 'Služby', href: '#' },
+  { title: 'Služby', href: '#services' },
   { title: 'Info', href: '#info' },
 ];
 ---
@@ -54,7 +54,7 @@ const navItems = [
   <div id="mobile-menu" class="fixed inset-0 bg-black z-40 translate-x-full transition-transform duration-300 ease-in-out lg:hidden flex flex-col items-center justify-center gap-8">
     <ul class="flex flex-col items-center gap-8">
       {navItems.map((item)=>(
-        <li><a href={item.href} class="text-3xl hover:text-white transition-colors">{item.title}</a></li>
+        <li class="nav-link"><a href={item.href} class="text-3xl hover:text-white transition-colors">{item.title}</a></li>
       ))}
     </ul>
     <div class="mt-4">
@@ -69,7 +69,24 @@ const navItems = [
   const line1 = document.getElementById('line1');
   const line2 = document.getElementById('line2');
   const line3 = document.getElementById('line3');
+  // Find all the links
+  const links = document.querySelectorAll('.nav-link');
 
+  // Add click event to each link
+  links.forEach(link => {
+    link.addEventListener('click', () => {
+      // Add the class that hides the menu
+      menu?.classList.add('translate-x-full');
+    document.body.classList.toggle('overflow-hidden');
+      
+      // Reset Hamburger to original state
+      line1?.classList.remove('rotate-45', 'translate-y-2');
+      line2?.classList.remove('opacity-0');
+      line3?.classList.remove('-rotate-45', '-translate-y-2');
+    });
+  });
+
+  // Toggle menu on button click
   btn?.addEventListener('click', () => {
     // Toggle Menu Slide
     menu?.classList.toggle('translate-x-full');

@@ -1,0 +1,64 @@
+---
+import ServicesCard from '../components/UI/ServicesCard.astro';
+
+const services = [
+  {
+    name: 'Pánské střihy',
+    description: 'Klasické i moderní střihy na míru vašemu stylu.',
+    price: '400',
+  },
+  {
+    name: 'Úprava vousů',
+    description: 'Precizní tvarování a péče o vousy.',
+    price: '250',
+  },
+  {
+    name: 'Dětské střihy',
+    description: 'Střihy pro    nejmenší s přístupem plným trpělivosti.',  
+    price: '300',
+  },  
+  
+  {
+    name: 'Pánské střihy',
+    description: 'Klasické i moderní střihy na míru vašemu stylu.',
+    price: '400',
+  },
+  {
+    name: 'Úprava vousů',
+    description: 'Precizní tvarování a péče o vousy.',
+    price: '250',
+  },
+  {
+    name: 'Dětské střihy',
+    description: 'Střihy pro    nejmenší s přístupem plným trpělivosti.',  
+    price: '300',
+  },  
+  
+  ]                                                                           
+---
+
+<section class="pb-67" id="services">
+    <h2 class="font-rokiest font-[1000] text-orange text-[48px] uppercase text-center">Naše služby</h2>
+    <div class="max-w-7xl mx-auto flex overflow-x-auto pb-10 px-[5%] cursor-grab active:cursor-grabbing hide-scrollbar snap-x snap-mandatory gap-6">
+        {services.map(service => (
+            <ServicesCard 
+                title={service.name} 
+                description={service.description} 
+                price={service.price} 
+            />
+        ))}
+    </div>
+</section>
+
+<style>
+  /* Hides scrollbar for Chrome, Safari and Opera */
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hides scrollbar for IE, Edge and Firefox */
+  .hide-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+</style>
