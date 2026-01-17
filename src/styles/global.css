@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+section {
+  scroll-margin-top: 20px;
+}
+
 @theme {
   --color-orange: #E9520E;
   --color-grey: #595959;

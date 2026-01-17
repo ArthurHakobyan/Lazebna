@@ -1,6 +1,8 @@
 ---
 import Navigation from '../components/Navigation.astro';
 import '../styles/global.css';
+import Footer from '../components/Footer.astro';
+
 ---
 
 <!doctype html>
@@ -19,8 +21,71 @@ import '../styles/global.css';
 	<body class="bg-black">
 		<Navigation />
 		<slot />
+		<Footer />
+			
+
+		<script>
+			// Smooth Scroll Implementation
+			
+  			const slowScrollTo = (targetElement: HTMLElement, duration: number) => {
+
+    			const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+    			const startPosition = window.pageYOffset;
+    			const distance = targetPosition - startPosition - 20; // -20 for navbar offset
+    			let startTime: number | null = null;
+
+    			// Easing function: "easeInOutQuad"
+    			const ease = (t: number, b: number, c: number, d: number) => {
+      			t /= d / 2;
+      			if (t < 1) return (c / 2) * t * t + b;
+      			t--;
+      			return (-c / 2) * (t * (t - 2) - 1) + b;
+    			};
+
+    			const animation = (currentTime: number) => {
+      				if (startTime === null) startTime = currentTime;
+      				const timeElapsed = currentTime - startTime;
+      				const run = ease(timeElapsed, startPosition, distance, duration);
+      				window.scrollTo(0, run);
+      				if (timeElapsed < duration) requestAnimationFrame(animation);
+    			};
+
+    		requestAnimationFrame(animation);
+  			};
+
+  			const initSlowScroll = () => {
+				
+    			const links = document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]');
+
+    			links.forEach(link => {
+
+      				link.addEventListener('click', (e) => {
+        				e.preventDefault();
+        				const id = link.getAttribute('href');
+        				if (!id || id === '#') return;
+
+        				const target = document.querySelector<HTMLElement>(id);
+        				if (target) {
+          				// ADJUST SPEED HERE: 1500 is 1.5 seconds
+          				slowScrollTo(target, 1500);
+          
+          				// Update URL hash
+          				history.pushState(null, '', id);
+        				}
+      				});
+    			});
+  			};
+
+  			initSlowScroll();
+  			document.addEventListener('astro:after-swap', initSlowScroll);
+
+			// End Smooth Scroll Implementation
+		</script>
+
 	</body>
 </html>
+
+
 
 <style>
 	html,
