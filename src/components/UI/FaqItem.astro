@@ -12,7 +12,7 @@ const { question, answer } = Astro.props;
 <div class="faq-container lg:w-[852px] bg-white/5 border border-white/10 rounded-xl shadow-[2px_4px_4px_rgba(63,63,63,0.32)] text-white mx-auto overflow-hidden my-6">
   
   <button class="faq-trigger flex items-center justify-between w-full p-4 cursor-pointer focus:outline-none">
-    <h3 class="text-left font-semibold">{question}</h3>
+    <h3 class="text-left font-normal lg:text-[24px] text-[20px]">{question}</h3>
     <Image 
       src={faqIcon} 
       alt="FAQ Icon" 
@@ -22,8 +22,8 @@ const { question, answer } = Astro.props;
 
   <div class="faq-content grid grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.68,-0.55,0.27,1.55)]">
     <div class="overflow-hidden">
-      <div class="p-6 pt-0 text-white">
-        <p class="lg:w-[65%]">{answer}</p>
+      <div class="p-4 pt-0 text-white">
+        <p class="lg:w-[80%] lg:text-[20px] whitespace-pre-line">{answer}</p>
       </div>
     </div>
   </div>

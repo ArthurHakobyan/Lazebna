@@ -9,8 +9,8 @@ const { title, description, price } = Astro.props;
 
 <div class="flex flex-col justify-between text-white p-4 lg:text-[24px] text-lg flex-none w-68 lg:w-[382px] min-h-[333px] lg:h-[444px] bg-white/5 border border-white/10 rounded-xl shadow-[2px_4px_4px_rgba(63,63,63,0.32)] hover:shadow-[0px_4.68px_5.68px_rgba(233,82,14,0.7)] transition-shadow duration-300 ease-in-out">
     <div>
-        <h3 class="text-[25px] lg:text-[36px]">{title}</h3>
-        <p class="text-[17px] lg:text-[24px]">{description}</p>
+        <h3 class="text-[25px] lg:text-[36px] pb-4">{title}</h3>
+        <p class="text-[17px] lg:text-[24px] whitespace-pre-line" >{description}</p>
     </div>
     <div class="flex justify-end">
         <p class="text-[17px] lg:text-[24px] tracking-[17%] text-grey">{price},-</p>

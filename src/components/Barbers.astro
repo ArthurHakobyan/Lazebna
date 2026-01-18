@@ -16,12 +16,12 @@ const initialBarber = {
 };
 ---
 
-<section class="pb-67" id="tym">
+<section class="pb-100" id="tym">
     
     <div class="max-w-7xl mx-auto text-white p-4">
         <h2 class="font-rokiest font-[1000] text-orange text-[48px] uppercase">Náš tým</h2>
-        <div class="lg:flex">
-            <div class="flex lg:w-[50%]">
+        <div class="lg:flex gap-6">
+            <div class="flex lg:w-[50%] lg:pt-6">
                 <div class="w-[30%] text-[36px] text-grey">
                     <ul id="barber-list">
                         <li class="barber-trigger cursor-pointer text-white transition-colors" data-name="martin">Martin</li>
@@ -29,7 +29,7 @@ const initialBarber = {
                         <li class="barber-trigger cursor-pointer hover:text-white transition-colors" data-name="david">David</li>
                     </ul>
                 </div>
-                <div class="lg:w-[416px] lg:h-[510px] w-[250px] h-[306px] overflow-hidden border-white rounded-xl shadow-[2px_4px_4px_rgba(63,63,63,0.32)]">
+                <div class="lg:w-[416px] lg:h-[510px] w-[250px] h-[306px] mt-4 overflow-hidden border-white rounded-xl shadow-[2px_4px_4px_rgba(63,63,63,0.32)]">
                     <Image 
                     id="barber-img" 
                     src="/barber1.jpg" 
@@ -40,13 +40,13 @@ const initialBarber = {
                 </div>
             </div>
     
-            <div class="flex flex-col justify-between lg:w-[50%] p-4">
+            <div class="flex flex-col justify-between lg:w-[50%] pt-8">
                 <div>
                     <p id="barber-slogan" class="lg:w-[80%] w-[90%] text-lg lg:text-[24px] leading-relaxed transition-opacity duration-300 pb-6">
                         {initialBarber.slogan}
                     </p>
                 </div>
-                <div class="flex justify-between text-sm lg:text-[19px] tracking-[17%] lg:pb-[128px] lg:pr-[100px] text-grey">
+                <div class="flex justify-between text-sm lg:text-[19px] tracking-[17%] lg:pb-[128px] lg:pr-[10px] text-grey">
                     <ul>
                         <li>FAVORITE FILM</li>
                         <li>FAVORITE ALBUM</li>
@@ -77,7 +77,7 @@ const initialBarber = {
                 </a>
             </div>
         </div>
-        <div class="lg:hidden my-4  mx-auto w-max">
+        <div class="lg:hidden my-4 mt-10 mx-auto w-max">
             <Button href="https://lazebna.reservio.com/" title="BOOK NOW" />
         </div>
     </div>

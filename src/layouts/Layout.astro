@@ -31,7 +31,7 @@ import Footer from '../components/Footer.astro';
 
     			const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
     			const startPosition = window.pageYOffset;
-    			const distance = targetPosition - startPosition - 20; // -20 for navbar offset
+    			const distance = targetPosition - startPosition - 200; // -200 for navbar offset
     			let startTime: number | null = null;
 
     			// Easing function: "easeInOutQuad"
