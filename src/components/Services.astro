@@ -36,18 +36,24 @@ const services = [
   ]                                                                           
 ---
 
-<section class="lg:pb-100 pb-56" id="services">
-    <h2 class="font-rokiest font-[1000] text-orange text-[48px] uppercase text-center pb-10">Naše služby</h2>
-    <div id="services-container" class=" flex overflow-x-auto pb-10 px-[5%] cursor-grab active:cursor-grabbing hide-scrollbar snap-x snap-mandatory gap-6">
-        {services.map(service => (
-            <ServicesCard 
-                title={service.name} 
-                description={service.description} 
-                price={service.price} 
-                
-            />
-        ))}
+<section class="lg:pb-100 pb-56 pt-12 section" id="services">
+    <div class='section-inner'>
+      <h2 class="font-rokiest font-[1000] text-orange text-[48px] uppercase text-center pb-10">
+        Naše služby
+      </h2>
+        <div id="services-container" class="flex overflow-x-scroll pb-10 px-[5%] cursor-grab active:cursor-grabbing hide-scrollbar snap-x snap-mandatory gap-6">
+            {services.map(service => (
+                <ServicesCard 
+                    title={service.name} 
+                    description={service.description} 
+                    price={service.price} 
+                    
+                />
+            ))}
+        </div>
+
     </div>
+  
 </section>
 
 <style>
@@ -61,6 +67,17 @@ const services = [
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
   }
+
+
+  .section {
+  height: calc(100vh - 64px);
+  background-color: black;
+  position: relative;
+  overflow: hidden;
+}
+
+
+
 </style>
 
 <script>
