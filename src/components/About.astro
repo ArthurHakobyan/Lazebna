@@ -4,9 +4,32 @@
 <section class="lg:pb-100 pb-56 pt-12" id="pribeh">
     <div class="max-w-7xl mx-auto text-white p-4">
         <h2 class="font-rokiest font-[1000] text-orange text-[48px] uppercase">Příběh</h2>
-        <p class="lg:w-240 text-[25px] lg:text-[36px]">V naší lazebně navazujeme na původní řemeslo péče o vzhled, ale podáváme ho v moderní podobě.<br /> 
+        <p class="lg:w-240 text-[25px] lg:text-[36px] para">V naší lazebně navazujeme na původní řemeslo péče o vzhled, ale podáváme ho v moderní podobě.<br /> 
 Každý střih bereme jako prostor, kde může vyniknout tvoje osobnost. Proto u nás najdeš kombinaci precizního poctivého řemesla, současných technik a individuálního přístupu.</p>
     </div>
 
 </section>
+
+<script>
+    import {gsap} from "gsap"
+    import { SplitText } from 'gsap/SplitText'
+    import { ScrollTrigger } from 'gsap/ScrollTrigger'
+    gsap.registerPlugin(ScrollTrigger)
+    gsap.registerPlugin(SplitText)
+
+    let split = SplitText.create(".para", { type: "words, chars," });
+
+    gsap.from(split.chars, {
+        opacity: 0,
+        duration: 6,
+        stagger: 0.03,
+        ease: "power2.in",
+        scrollTrigger: {
+            trigger: ".para",
+            start: 'top 80%',
+            end: "bottom 60%",
+            scrub: 1, 
+        }
+    });
+</script>
 
