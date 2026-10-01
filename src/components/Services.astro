@@ -4,36 +4,36 @@ import ServicesCard from '../components/UI/ServicesCard.astro';
 const services = [
   {
     name: 'Klasický střih',
-    description: `Klasický střih s čistými konturami a přirozeným tvarem hlavy. Jednoduchý, fresh look, který sedí vždy a všude.`,  
-    price: '600',
-  }, 
+    description: `Klasický střih s čistými konturami a přirozeným tvarem hlavy. Jednoduchý, fresh look, který sedí vždy a všude.`,
+    // price: '600',
+  },
   {
     name: 'Střih & Vousy',
-    description: `Kompletní střih pro delší vlasy s precizní úpravou vousů. 
+    description: `Kompletní střih pro delší vlasy s precizní úpravou vousů.
     Více práce a detailů pro perfektně sladěný, čistý a stylový look.`,
-    price: '900',
-  }, 
-  
+    // price: '900',
+  },
+
   {
     name: 'Vousy',
-    description: `Precizní tvarování a úprava vousů podle tvého stylu. 
+    description: `Precizní tvarování a úprava vousů podle tvého stylu.
     Čistý, upravený look, který zvýrazní tvůj profil a charakter.`,
-    price: '400',
+    // price: '400',
   },
   {
     name: 'Úprava boků',
-    description: `Úprava boků s důrazem na perfektní fade. 
+    description: `Úprava boků s důrazem na perfektní fade.
     Čistý, upravený vzhled, který ponechává vršek nedotčený.`,
-    price: '400',
+    // price: '400',
   },
 
   {
     name: 'Dětský střih',
     description: `Dětský střih s čistými konturami a přirozeným tvarem hlavy. Ideální pro nejmenší zákazníky.`,
-    price: '450',
+    // price: '450',
   },
-    
-  ]                                                                           
+
+  ]
 ---
 
 <section class="lg:pb-100 pb-56 pt-12 mb-24" id="services">
@@ -43,11 +43,9 @@ const services = [
       </h2>
         <div id="services-container" class="flex overflow-x-scroll pb-10 px-[5%] cursor-grab active:cursor-grabbing hide-scrollbar snap-x snap-mandatory gap-6">
             {services.map(service => (
-                <ServicesCard 
-                    title={service.name} 
-                    description={service.description} 
-                    price={service.price} 
-                    
+                <ServicesCard
+                    title={service.name}
+                    description={service.description}
                 />
             ))}
         </div>
